@@ -49,7 +49,7 @@ public class DepartmentListController implements Initializable {
 		Stage parentStage = Utils.currentStage(event);
 		Department obj = new Department();
 		createDialogForm(obj, "/gui/DepartmentForm.fxml", parentStage);
-		
+
 	}
 
 	public void setDepartmentService(DepartmentService service) {
@@ -80,22 +80,22 @@ public class DepartmentListController implements Initializable {
 		tableViewDepartment.setItems(obsList);
 	}
 
-	
 	private void createDialogForm(Department obj, String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			Pane pane = loader.load();
-			
+
 			DepartmentFormController controller = loader.getController();
 			controller.setDepartment(obj);
+			controller.setDepartmentService(new DepartmentService());
 			controller.updateFormData();
-			
+
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Enter Department data");
 			dialogStage.setScene(new Scene(pane));
-			dialogStage.setResizable(false);//janela pode ser redimencionada
-			dialogStage.initOwner(parentStage); 
-			dialogStage.initModality(Modality.WINDOW_MODAL); //n deixa acessar a janela anterior
+			dialogStage.setResizable(false);// janela pode ser redimencionada
+			dialogStage.initOwner(parentStage);
+			dialogStage.initModality(Modality.WINDOW_MODAL); // n deixa acessar a janela anterior
 			dialogStage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
