@@ -78,6 +78,7 @@ public class DepartmentListController implements Initializable {
 		tableViewDepartment.setItems(obsList);
 	}
 
+	
 	private void createDialogForm(String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
@@ -87,9 +88,9 @@ public class DepartmentListController implements Initializable {
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Enter Department data");
 			dialogStage.setScene(new Scene(pane));
-			dialogStage.setResizable(false);
-			dialogStage.initOwner(parentStage);
-			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.setResizable(false);//janela pode ser redimencionada
+			dialogStage.initOwner(parentStage); 
+			dialogStage.initModality(Modality.WINDOW_MODAL); //n deixa acessar a janela anterior
 			dialogStage.showAndWait();
 		} catch (IOException e) {
 			e.printStackTrace();
